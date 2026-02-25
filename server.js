@@ -50,7 +50,5 @@ app.delete("/users/:id", async (req, res) => {
     await db.run("DELETE FROM users WHERE id = ?", [req.params.id]);
     res.json({ success: true });
 });
-// This tells Express to serve your index.html from the "public" folder automatically
-app.use(express.static("public"));
 
 app.listen(3000, () => console.log("✨ Pro Server running at http://localhost:3000"));
