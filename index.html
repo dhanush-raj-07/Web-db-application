@@ -248,7 +248,13 @@ async function addUser() {
 
         lucide.createIcons();
         fetchUsers();
+        const path = require('path');
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html')); 
+});
     </script>
 </body>
 
 </html>
+
