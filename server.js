@@ -50,5 +50,13 @@ app.delete("/users/:id", async (req, res) => {
     await db.run("DELETE FROM users WHERE id = ?", [req.params.id]);
     res.json({ success: true });
 });
+app.get("/", (req, res) => {
+    res.send("Server is running successfully 🚀");
+    const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+});
+
 
 app.listen(3000, () => console.log("✨ Pro Server running at http://localhost:3000"));
