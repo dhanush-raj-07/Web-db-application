@@ -203,34 +203,14 @@
             });
         }
 
-async function addUser() {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-
-    if (!name || !email) return notify("Fields cannot be empty", "error");
-
-    try {
-        const res = await fetch('/users', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email })
-        });
-
-        if (res.ok) {
-            notify("User Saved Successfully!");
-            toggleModal(); // Close the popup
-            fetchUsers();  // REFRESH the table and charts
-            
-            // Clear the inputs
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
-        } else {
-            notify("Error: Email might already exist", "error");
-        }
-    } catch (err) {
-        notify("Server not found. Are you using GitHub Pages?", "error");
-    }
-}
+        async function addUser() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const res = await fetch('/users', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email })
+            });
             if(res.ok) {
                 toggleModal();
                 fetchUsers();
@@ -248,13 +228,6 @@ async function addUser() {
 
         lucide.createIcons();
         fetchUsers();
-        const path = require('path');
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html')); 
-});
     </script>
 </body>
-
 </html>
-
